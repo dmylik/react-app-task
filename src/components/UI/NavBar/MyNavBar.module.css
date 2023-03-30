@@ -1,0 +1,12 @@
+.navbar {
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 15px;
+    background: lightblue;
+}
+
+.navbar_link {
+    margin-right: 1em;
+}
