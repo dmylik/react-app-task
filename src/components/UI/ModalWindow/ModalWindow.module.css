@@ -14,8 +14,10 @@
     border-radius: 8px;
     width: 70%;
     min-height: 25%;
-    height: 100%;
-    overflow: auto;
+    height: 50%;
+    overflow-y: scroll;
+    overflow-x: auto;
+
 
 }
 

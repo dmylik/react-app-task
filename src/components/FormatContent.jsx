@@ -1,20 +1,19 @@
 import React from 'react';
-import {useSelector} from "react-redux";
 
-const FormatContent = ({format}) => {
-    const recipe = useSelector(state => state.bacon[`recipe${format}`]);
+const FormatContent = ({format, recipe}) => {
 
-    if(format!=='HTML')
-        return (
+    if(format!=='HTML') //к данным формата HTML применяется другой способ вывода данных
+        return ( // вывод данных с JSON и Text
             <div>
                 <h3>{format}</h3>
                 {recipe?.map((one,idx) => <p key={`recipe${format}`+idx}>{one}</p>)}
             </div>
         );
     else {
-        let html = recipe.join('<br>');
+        let html = recipe;
+        console.log(html)
         const createMarkup = () =>  ({__html: html});
-        return (
+        return ( // Вывод формата HTML
             <div>
                 <h3>{format}</h3>
                 <div dangerouslySetInnerHTML ={createMarkup()}/>

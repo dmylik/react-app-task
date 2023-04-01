@@ -3,7 +3,7 @@ import './style/App.css';
 import {BrowserRouter} from "react-router-dom";
 import {Route, Routes} from "react-router";
 import AddBacon from "./pages/AddBacon.jsx";
-import FoundData from "./components/FoundData.jsx";
+import FoundData from "./pages/FoundData.jsx";
 
 function App() {
   return (
@@ -14,7 +14,6 @@ function App() {
                 <Route path='*' element={<AddBacon/>}/>
             </Routes>
         </BrowserRouter>
-
   );
 }
 

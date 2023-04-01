@@ -20,6 +20,7 @@ const SearchOptions = () => {
     const [format, setFormat] = useState('');
 
     useEffect(()=>{
+        // получение данных с localStorage
         const savedBacon = JSON.parse(localStorage.getItem('bacon'));
 
         setType(savedBacon.type);
@@ -27,21 +28,23 @@ const SearchOptions = () => {
         setSentences(savedBacon.sentences);
         setLorem(savedBacon.lorem);
         setFormat(savedBacon.format);
-    }, []);
+    }, []); //componentDidUpdate () - отрабатывет после перерисовки компонента и запрашивает данные с localStorage
 
     useEffect(()=>{
         // создаём объект
         const bacon = { type: type, paras: paras, sentences: sentences, lorem: lorem, format: format };
         // преобразовываем объект в строку и сохраняем в localStorage
         localStorage.setItem('bacon', JSON.stringify(bacon));
-    },[type, paras, sentences, lorem, format]);
+    },[type, paras, sentences, lorem, format]); // Следит за изменением параметроав и вносит изменения в localStorage
 
     const find = async () =>{
-        dispatch(setIsLoading(true));
-        dispatch(setViewModalWindow(true));
-        dispatch( fetchRecipe(type, format, paras, sentences, lorem ? 1 : 0));
+        dispatch(setIsLoading(true)); // установка флага загрузки (для "Спинера")
+        dispatch(setViewModalWindow(true)); // открвтие модального окна
+        dispatch( fetchRecipe(type, format, paras, sentences, lorem ? 1 : 0)); // Формирование запроса
     };
 
+    // paras и sentences не могут быть установле оба
+    // обнуление одного из них при изменении другого
     const parasAdd = (val) =>{
         setParas(val);
         setSentences(0);
